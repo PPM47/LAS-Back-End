@@ -1,6 +1,7 @@
 package lasbackend.lasApplication.Repository;
 
 
+import lasbackend.lasApplication.Entity.Admin;
 import lasbackend.lasApplication.Entity.Appointment;
 import lasbackend.lasApplication.Entity.Patient;
 import org.bson.types.ObjectId;
@@ -15,6 +16,7 @@ public interface PatientRepository extends MongoRepository<Patient, ObjectId> {
 
     Optional <Patient> findByPatientId(String patientId);
     Optional<Patient> findByEmail(String email);
+    Patient findByemail(String email);
 
 
     Optional<Patient> findEmailByPatientId(String patientId);

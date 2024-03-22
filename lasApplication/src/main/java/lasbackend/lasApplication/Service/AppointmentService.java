@@ -22,8 +22,6 @@ public class AppointmentService {
 
     @Autowired
     private AppointmentRepository appointmentRepository;
-
-
     @Autowired
     private JavaMailSender mailSender;
     @Autowired

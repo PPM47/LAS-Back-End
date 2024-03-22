@@ -1,5 +1,6 @@
 package lasbackend.lasApplication.Service;
 
+import lasbackend.lasApplication.Entity.Admin;
 import lasbackend.lasApplication.Entity.Appointment;
 import lasbackend.lasApplication.Entity.Patient;
 import lasbackend.lasApplication.Repository.PatientRepository;
@@ -87,6 +88,10 @@ public class PatientService {
             return patient;
 
 
+    }
+    public boolean auth(String email, String password) {
+        Patient patient = patientRepository.findByemail(email);
+        return patient != null && patient.getPassword().equals(password);
     }
 
 //    public Patient loginPatient(String email, String password){

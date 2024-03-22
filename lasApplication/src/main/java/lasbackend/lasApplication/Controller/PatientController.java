@@ -113,6 +113,18 @@ public class PatientController {
 
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody Map<String, String> payload) {
+        String email =  payload.get("email");
+        String password = payload.get("password");
+
+        if (patientService.auth(email, password)) {
+            return ResponseEntity.ok("Login successful");
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login failed");
+        }
+    }
+
     @GetMapping
     public String klk(){
         return "I am fine";
