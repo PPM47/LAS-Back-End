@@ -77,15 +77,15 @@ public class AppointmentController {
 
     }
 
-    @GetMapping("/today/{date}")
+    @GetMapping("/today/{date}") // search appointments by date
     public ResponseEntity<Optional<List<Appointment>>> getAllAppointment(@PathVariable String date) {
         return new ResponseEntity<Optional<List<Appointment>>>(appointmentService.todatAppointment(date), HttpStatus.OK);
     }
-    @GetMapping("/pAppointment/{patientId}")
+    @GetMapping("/pAppointment/{patientId}") // search appointment by patient
     public ResponseEntity<Optional<List<Appointment>>> getSingleAppointment(@PathVariable String patientId) {
         return new ResponseEntity<Optional<List<Appointment>>>(appointmentService.getAppointment(patientId), HttpStatus.OK);
     }
-    @DeleteMapping("/delete/{appointmentId}")
+    @DeleteMapping("/delete/{appointmentId}") // delete apointments
     public ResponseEntity<?> deleteAppointment(@PathVariable String appointmentId, @RequestBody Map<String, String> payload) {
         Optional<Appointment> appointmentOptional = appointmentRepository.appointmentId(appointmentId);
         String subject =("Lad Appointment System, Appointment is cancelled");
@@ -93,7 +93,7 @@ public class AppointmentController {
                 + "your Appointment is cancelled :- " + appointmentId + "\n"
                 + "We hope you're having a great day!\n\n"
                 + "Best regards,\n"
-                + "LAS Application\n";
+                + "LAS Application\n"; // set email text body
 
         if (appointmentOptional.isPresent()) {
             Appointment appointment = appointmentOptional.get();
@@ -109,7 +109,7 @@ public class AppointmentController {
                 message.setSubject(subject);
                 message.setText( template );
 
-                mailSender.send(message);
+                mailSender.send(message); // send email notification
                 System.out.println("Appointment Cancelled Emaill send successfully");
 
                 return ResponseEntity.ok("Appointment cancelled ");
@@ -123,7 +123,7 @@ public class AppointmentController {
         }
     }
 
-    @PostMapping("/make")
+    @PostMapping("/make") // making Appointments
     public ResponseEntity<?> createAppointment(@RequestBody Map<String, String> payload) {
 
         if (patientRepository.findByEmail(payload.get("email")).isPresent()) {

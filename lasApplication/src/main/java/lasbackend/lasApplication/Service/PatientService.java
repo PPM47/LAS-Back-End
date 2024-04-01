@@ -44,6 +44,25 @@ public class PatientService {
     }
     public Patient updatePatient(String patientId, Patient updatedPatient) {
         Optional<Patient> optionalPatient = patientRepository.findByPatientId(patientId);
+
+        String email = updatedPatient.getEmail();
+        String password = updatedPatient.getPassword();
+        String patientfName = updatedPatient.getPatientFName();
+        String patientlName = updatedPatient.getPatientLName();
+
+
+        String subject =("Lad Appointment System Patient Update Email");
+        String template = "Hello, ! " +patientfName +" " + patientlName + "\n\n"
+                + "This is your Patient ID :- " + patientId + "\n"
+                + "This is your Email :- " + email + "\n"
+                +"This is your password :- " + password + "\n"
+                + "We hope you're having a great day!\n\n"
+                + "Best regards,\n"
+                + "LAS Application\n";
+
+
+
+
         if (optionalPatient.isPresent()) {
             Patient patient = optionalPatient.get();
             // Update patient details
@@ -55,7 +74,17 @@ public class PatientService {
             patient.setEmail(updatedPatient.getEmail());
             patient.setPassword(updatedPatient.getPassword());
             // Save and return updated patient
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setFrom("abclaboratories27@gmail.com");
+            message.setTo(email);
+            message.setSubject(subject);
+            message.setText( template );
+
+            mailSender.send(message);
+            System.out.println("Patient Detail updated Maill send successfully");
+
             return patientRepository.save(patient);
+
         } else {
             return null; // Patient not found
         }
@@ -71,6 +100,8 @@ public class PatientService {
             String subject =("Lad Appointment System Patient ID Email");
             String template = "Hello, ! " +patientFName +" " + patientLName + "\n\n"
                     + "This is your Patient ID :- " + patientId + "\n"
+                    + "This is your Email :- " + email + "\n"
+                    +"This is your password :- " + password + "\n"
                     + "We hope you're having a great day!\n\n"
                     + "Best regards,\n"
                     + "LAS Application\n";

@@ -29,6 +29,8 @@ public class AdminService {
         String subject =("Lad Appointment System Admin ID Email");
         String template = "Hello, ! " +adminName+"\n\n"
                 + "This is your Admin ID :- " + adminId + "\n"
+                + "This is your Email :- " + email + "\n"
+                +"This is your password :- " + password + "\n"
                 + "We hope you're having a great day!\n\n"
                 + "Best regards,\n"
                 + "LAS Application\n";
