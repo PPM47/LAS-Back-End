@@ -55,7 +55,7 @@ public class AppointmentService {
                 .apply(new Update().push("appointmentId").value(appointment))
                 .first();
 
-        String subject =("Lad Appointment System Appointment ID Email");
+        String subject =("Lab Appointment System Appointment ID Email");
         String template = "Hello, ! " + "\n\n"
                 + "This is your Appointment ID :- " + appointmentId + "\n"
                 + "This is your testCatagory :- " + testCatagory + "\n"

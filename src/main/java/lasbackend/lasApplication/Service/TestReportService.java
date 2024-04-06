@@ -59,7 +59,7 @@ public class TestReportService {
                 anyother)));
         System.out.println("Patient successfully entered into the database");
 
-        String subject =("Lad Appointment System Test Report Email");
+        String subject =("Lab Appointment System Test Report Email");
         String template = "Appointment ID :-" +appointmentId +  "\n\n"
                 + "testCatagory :- " +  testCatagory +"\n"
                 + "chloride :- " + chloride+ "\n"

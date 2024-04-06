@@ -44,7 +44,7 @@ public class AppointmentController {
         String patientId = payload.get("patientId");
         String appointmentId = payload.get("appointmentId");
 
-        String subject =("Lad Appointment System, Payment Receipt");
+        String subject =("Lab Appointment System, Payment Receipt");
         String template = "Hello, ! " + name +"\n\n"
                 + "Payment Date :- " + date + "\n"
                 + "your Appointment ID :- " + appointmentId + "\n"

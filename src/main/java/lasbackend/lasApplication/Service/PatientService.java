@@ -51,7 +51,7 @@ public class PatientService {
         String patientlName = updatedPatient.getPatientLName();
 
 
-        String subject =("Lad Appointment System Patient Update Email");
+        String subject =("Lab Appointment System Patient Update Email");
         String template = "Hello, ! " +patientfName +" " + patientlName + "\n\n"
                 + "This is your Patient ID :- " + patientId + "\n"
                 + "This is your Email :- " + email + "\n"
@@ -97,7 +97,7 @@ public class PatientService {
             List<Patient> patient = Collections.singletonList(patientRepository.insert(new Patient(patientId, patientFName, patientLName, gender, number, email, password, birthDate)));
             System.out.println("Patient successfully entered into the database");
 
-            String subject =("Lad Appointment System Patient ID Email");
+            String subject =("Lab Appointment System Patient ID Email");
             String template = "Hello, ! " +patientFName +" " + patientLName + "\n\n"
                     + "This is your Patient ID :- " + patientId + "\n"
                     + "This is your Email :- " + email + "\n"

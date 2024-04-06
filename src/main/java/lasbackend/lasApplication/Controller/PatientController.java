@@ -55,7 +55,7 @@ public class PatientController {
     @DeleteMapping("/delete/{patientId}")
     public ResponseEntity<?> deletePatient(@PathVariable String patientId, @RequestBody Map<String, String> credentials) {
         Optional<Patient> patientOptional = patientRepository.findByPatientId(patientId);
-        String subject =("Lad Appointment System Patient Account is Deleted ");
+        String subject =("Lab Appointment System Patient Account is Deleted ");
         String template = "Hello, ! " +"\n\n"
                 + "your LAS Account is Deleted :- " + patientId + "\n"
                 + "We hope you're having a great day!\n\n"
